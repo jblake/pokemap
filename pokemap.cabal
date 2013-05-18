@@ -4,6 +4,7 @@ cabal-version: >=1.8
 data-dir: data
 data-files:
   *.blocks
+  *.tiles.bin
 extra-source-files:
   data/Makefile
   data/*.blocks
