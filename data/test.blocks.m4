@@ -2,6 +2,8 @@ divert(-1)
 
 This file should be preprocessed with m4.
 
+Use test.tiles.m4 to generate the graphical component of this blockset.
+
 The various block types.
 
 The solid terrains.

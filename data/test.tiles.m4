@@ -2,6 +2,8 @@ divert(-1)
 
 This file should be preprocessed with m4.
 
+This is in relation to stock tileset 1.
+
 The various terrains.
 
 This is a helper for nonparitied terrains.
