@@ -1,0 +1,16 @@
+block index:2   north:gg south:gg east:gg west:gg
+block index:4   north:gg south:gg east:gg west:gg
+block index:5   north:tt south:tt east:tt west:tt
+block index:60  north:tg south:gg east:gg west:tg
+block index:61  north:gt south:gg east:tg west:gg
+block index:62  north:gg south:tg east:gg west:gt
+block index:63  north:gg south:gt east:gt west:gg
+block index:92  north:tt south:tg east:tg west:tt
+block index:93  north:tt south:gg east:tg west:tg
+block index:94  north:tt south:gt east:tt west:tg
+block index:96  north:tg south:tg east:gg west:tt
+block index:97  north:tt south:tt east:tt west:tt
+block index:98  north:gt south:gt east:tt west:gg
+block index:100 north:tg south:tt east:gt west:tt
+block index:101 north:gg south:tt east:gt west:gt
+block index:102 north:gt south:tt east:tt west:gt
