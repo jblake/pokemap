@@ -1,3 +1,5 @@
+#!/usr/bin/runhaskell
+
 -- Copyright © 2013 Julian Blake Kongslie <jblake@omgwallhack.org>
 -- Licensed under the MIT license.
 
