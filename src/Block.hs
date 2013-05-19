@@ -1,8 +1,9 @@
 -- Copyright © 2013 Julian Blake Kongslie <jblake@omgwallhack.org>
 -- Licensed under the MIT license.
 
-{-# OPTIONS_GHC -Wall -Werror #-}
 {-# LANGUAGE FlexibleContexts #-}
+
+{-# OPTIONS_GHC -Wall -Werror #-}
 
 module Block
 where
@@ -87,14 +88,8 @@ parseBlock = do
 
   return block
 
-readBlockFile :: String -> IO [Block String]
-readBlockFile file = do
-
-  d <- readFile file
-
-  case P.parse (P.many parseBlock <* P.eof) file d of
-    Left e -> fail $ show e
-    Right bs -> return bs
+parseBlockFile :: (P.Stream s Identity Char) => String -> s -> Either P.ParseError [Block String]
+parseBlockFile = P.parse $ P.many parseBlock <* P.eof
 
 type PartialMap c = Array (Int, Int) (Maybe (Block c))
 type Map c = Array (Int, Int) (Block c)

@@ -1,8 +1,9 @@
 -- Copyright © 2013 Julian Blake Kongslie <jblake@omgwallhack.org>
 -- Licensed under the MIT license.
 
-{-# OPTIONS_GHC -Wall -Werror -fno-warn-orphans #-}
 {-# LANGUAGE TypeFamilies #-}
+
+{-# OPTIONS_GHC -Wall -Werror -fno-warn-orphans #-}
 
 module Maze
 where

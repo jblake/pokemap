@@ -22,8 +22,10 @@ executable generatemap
     base,
     bytestring,
     deepseq,
+    filepath,
     MonadRandom,
     monads-tf,
+    optparse-applicative,
     parsec,
     random,
     random-shuffle,
@@ -41,9 +43,12 @@ executable rendermap
     base,
     bytestring,
     cairo,
-    deepseq
+    deepseq,
+    optparse-applicative
   hs-source-dirs: src
   main-is: RenderMap.hs
+  other-modules:
+    Paths_pokemap
 
 source-repository head
   type: git
