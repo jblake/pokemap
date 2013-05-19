@@ -7,9 +7,9 @@ data-files:
   *.tiles.bin
 extra-source-files:
   data/Makefile
-  data/*.blocks
   data/*.blocks.m4
   data/*.tiles.m4
+  data/*.map
 license-file: LICENSE
 license: MIT
 maintainer: jblake@omgwallhack.org
