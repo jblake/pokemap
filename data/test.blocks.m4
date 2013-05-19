@@ -7,32 +7,32 @@ Use test.tiles.m4 to generate the graphical component of this blockset.
 The various block types.
 
 The solid terrains.
-define(`rock',  0x00)
+define(`grass', 0x00)
 define(`dirt',  0x01)
-define(`grass', 0x02)
-define(`water', 0x03)
-define(`sand',  0x04)
-define(`trees', 0x05)
+define(`sand',  0x02)
+define(`tree',  0x03)
+define(`rock',  0x04)
+define(`water', 0x05)
 
 For terrain interactions, one terrain is "lower" and one is "higher".
 This refers solely to the terrain numbers, and is only to disambiguate them.
 
 The double-terrain transition offsets.
-define(`rockdirt',   0x10)
-define(`rockgrass',  0x20)
-define(`rockwater',  0x30)
-define(`rocksand',   0x40)
-define(`rocktrees',  0x50)
-define(`dirtgrass',  0x60)
-define(`dirtwater',  0x70)
-define(`dirtsand',   0x80)
-define(`dirttrees',  0x90)
-define(`grasswater', 0xa0)
-define(`grasssand',  0xb0)
-define(`grasstrees', 0xc0)
-define(`watersand',  0xd0)
-define(`watertrees', 0xe0)
-define(`sandtrees',  0xf0)
+define(`grassdirt',  0x10)
+define(`grasssand',  0x20)
+define(`grasstree',  0x30)
+define(`grassrock',  0x40)
+define(`grasswater', 0x50)
+define(`dirtsand',   0x60)
+define(`dirttree',   0x70)
+define(`dirtrock',   0x80)
+define(`dirtwater',  0x90)
+define(`sandtree',   0xa0)
+define(`sandrock',   0xb0)
+define(`sandwater',  0xc0)
+define(`treerock',   0xd0)
+define(`treewater',  0xe0)
+define(`rockwater',  0xf0)
 
 Double-terrain interactions.
 define(`vertnorth', 0x00) Two terrains, vertical, lower on north.
@@ -54,61 +54,6 @@ define(`slash',     0x0c) Two terrains, diagonal, lower on northeast and southwe
 define(`backslash', 0x0d) Two terrains, diagonal, lower on southeast and northwest.
 
 For double-terrain interactions, use offset+interaction.
-
-This gives us a block map that looks like this:
-
-      0x_0  0x_1  0x_2  0x_3  0x_4  0x_5  0x_6  0x_7  0x_8  0x_9  0x_a  0x_b  0x_c  0x_d  0x_e  0x_f
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-0x0_ |SOLID|SOLID|SOLID|SOLID|SOLID|SOLID|CAVE |                                                     |
-     |ROCK |DIRT |GRASS|WATER|SAND |TREES|     |                                                     |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x1_ |ROCK-DIRT INTERACTIONS                                                             |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x2_ |ROCK-GRASS INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x3_ |ROCK-WATER INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x4_ |ROCK-SAND INTERACTIONS                                                             |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x5_ |ROCK-TREES INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x6_ |DIRT-GRASS INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x7_ |DIRT-WATER INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x8_ |DIRT-SAND INTERACTIONS                                                             |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0x9_ |DIRT-TREES INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0xa_ |GRASS-WATER INTERACTIONS                                                           |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0xb_ |GRASS-SAND INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0xc_ |GRASS-TREES INTERACTIONS                                                           |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0xd_ |WATER-SAND INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-0xe_ |WATER-TREES INTERACTIONS                                                           |HOUSE      |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+           +
-0xf_ |SAND-TREES INTERACTIONS                                                            |           |
-     |                                                                                   |           |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-      vert  vert  horiz horiz inner                   outer                   slash back
-      north south east  west  ne    se    nw    sw    ne    se    nw    sw          slash
 
 This layout is reasonably organized, and gives us a complete set of two-terrain interaction blocks.
 We have 40 blocks left over for special stuff, before we have to start sacrificing interactions.
@@ -185,26 +130,33 @@ I didn't bother with a helper for the 1-block cave special; it was simpler to ju
 Now for the actual block definitions.
 
 divert(0)dnl
-solid(`rock')
-solid(`dirt')
 solid(`grass')
-solid(`water')
+solid(`dirt')
 solid(`sand')
-solid(`trees')
-double(`rock',  `dirt')
-double(`rock',  `grass')
-double(`rock',  `water')
-double(`rock',  `sand')
-double(`rock',  `trees')
-double(`dirt',  `grass')
-double(`dirt',  `water')
-double(`dirt',  `sand')
-double(`dirt',  `trees')
-double(`grass', `water')
+solid(`tree')
+solid(`rock')
+solid(`water')
+
+double(`grass', `dirt')
 double(`grass', `sand')
-double(`grass', `trees')
-double(`water', `sand')
-double(`water', `trees')
-double(`sand',  `trees')
+double(`grass', `tree')
+double(`grass', `rock')
+double(`grass', `water')
+
+double(`dirt',  `sand')
+double(`dirt',  `tree')
+double(`dirt',  `rock')
+double(`dirt',  `water')
+
+double(`sand',  `tree')
+double(`sand',  `rock')
+double(`sand',  `water')
+
+double(`tree',  `rock')
+double(`tree',  `water')
+
+double(`rock',  `water')
+
 special(`house', `dirt')
+
 block index:eval(cave) north:`rock' south:`dirt' east:`rockdirt' west:`rockdirt'
