@@ -11,7 +11,6 @@ import Control.DeepSeq
 import Control.Monad
 import Control.Monad.Random
 import Data.Array
-import Data.Bits
 import qualified Data.ByteString as BS
 import Data.Function
 import Data.List
@@ -80,6 +79,4 @@ main = do
 
       putStrLn $ "Saving result to " ++ show outFile ++ "."
 
-      let bstr = BS.pack $ [ fromIntegral $ xmax `shiftR` 8, fromIntegral xmax, fromIntegral $ ymax `shiftR` 8, fromIntegral ymax ] ++ [ blockIndex $ m ! (x,y) | y <- [1..ymax], x <- [1..xmax] ]
-
-      BS.writeFile outFile bstr
+      BS.writeFile outFile $ BS.pack [ blockIndex $ m ! (x,y) | y <- [1..ymax], x <- [1..xmax] ]
