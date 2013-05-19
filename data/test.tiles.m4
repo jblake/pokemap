@@ -87,35 +87,35 @@ $2np4 $2np3 $2np4 $2np3
 $2p2  $2p1  $2p2  $2p1')
 
 define(`horizontal', `
-$1p4 $1ep3 $2wp4 $2p3
-$1p2 $1ep1 $2wp2 $2p1
-$1p4 $1ep3 $2wp4 $2p3
-$1p2 $1ep1 $2wp2 $2p1')
+$2p4 $2ep3 $1wp4 $1p3
+$2p2 $2ep1 $1wp2 $1p1
+$2p4 $2ep3 $1wp4 $1p3
+$2p2 $2ep1 $1wp2 $1p1')
 
 And now, the corners. Inner terrain type is first.
 
 define(`cornernw', `
 $1p4  $1ep3  $2wp4   $2p3
-$1sp2 $1sep1 $2wp2   $2p1
-$2np4 $2np3  $2nwip4 $2p3
+$1sp2 $2nwp1 $2wp2   $2p1
+$2np4 $2np3  $2p4    $2p3
 $2p2  $2p1   $2p2    $2p1')
 
 define(`cornerne', `
 $2p4 $2ep3   $1wp4  $1p3
-$2p2 $2ep1   $1swp2 $1sp1
-$2p4 $2neip3 $2np4  $2np3
+$2p2 $2ep1   $2nep2 $1sp1
+$2p4 $2p3    $2np4  $2np3
 $2p2 $2p1    $2p2   $2p1')
 
 define(`cornersw', `
 $2p4  $2p3   $2p4    $2p3
-$2sp2 $2sp1  $2swip2 $2p1
-$1np4 $1nep3 $2wp4   $2p3
+$2sp2 $2sp1  $2p2    $2p1
+$1np4 $2swp3 $2wp4   $2p3
 $1p2  $1ep1  $2wp2   $2p1')
 
 define(`cornerse', `
 $2p4 $2p3    $2p4   $2p3
-$2p2 $2seip1 $2sp2  $2sp1
-$2p4 $2ep3   $1nwp4 $1np3
+$2p2 $2p1    $2sp2  $2sp1
+$2p4 $2ep3   $2sep4 $1np3
 $2p2 $2ep1   $1wp2  $1p1')
 
 And diagonals. Slash type is first.
