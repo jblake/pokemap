@@ -22,6 +22,7 @@ import Graphics.Rendering.Cairo hiding
   ( version
   )
 import Options.Applicative
+import System.Directory
 import qualified Text.ParserCombinators.ReadP as RP
 
 import Paths_pokemap
@@ -62,7 +63,16 @@ searchFile :: FilePath -> IO BS.ByteString
 searchFile fp = catch (BS.readFile fp) $ \(_ :: IOException) -> getDataFileName fp >>= BS.readFile
 
 searchSurface :: FilePath -> IO Surface
-searchSurface fp = catch (imageSurfaceCreateFromPNG fp) $ \(_ :: IOException) -> getDataFileName fp >>= imageSurfaceCreateFromPNG
+searchSurface fp = do
+  ex <- doesFileExist fp
+  if ex
+    then imageSurfaceCreateFromPNG fp
+    else do
+      fp' <- getDataFileName fp
+      ex' <- doesFileExist fp'
+      if ex'
+        then imageSurfaceCreateFromPNG fp'
+        else fail $ "Could not find tile image " ++ show fp ++ "!"
 
 main :: IO ()
 main = do

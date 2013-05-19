@@ -4,6 +4,8 @@ cabal-version: >=1.8
 data-dir: data
 data-files:
   *.blocks
+  *.map
+  *.png
   *.tiles.bin
 extra-source-files:
   data/Makefile
@@ -45,6 +47,7 @@ executable rendermap
     bytestring,
     cairo,
     deepseq,
+    directory,
     optparse-applicative
   hs-source-dirs: src
   main-is: RenderMap.hs
