@@ -16,7 +16,7 @@ maintainer: jblake@omgwallhack.org
 name: pokemap
 version: 0.1
 
-executable pokemap
+executable generatemap
   build-depends:
     array,
     base,
@@ -29,11 +29,21 @@ executable pokemap
     random-shuffle,
     transformers
   hs-source-dirs: src
-  main-is: Main.hs
+  main-is: GenerateMap.hs
   other-modules:
-    Block,
-    Maze,
+    Block
+    Maze
     Paths_pokemap
+
+executable rendermap
+  build-depends:
+    array,
+    base,
+    bytestring,
+    cairo,
+    deepseq
+  hs-source-dirs: src
+  main-is: RenderMap.hs
 
 source-repository head
   type: git

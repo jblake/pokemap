@@ -41,7 +41,7 @@ main = do
     [xstr, ystr, blockFile]          -> filePath blockFile     >>= \f -> return (read xstr, read ystr, f, "out.map")
     [xstr, ystr]                     -> filePath "test.blocks" >>= \f -> return (read xstr, read ystr, f, "out.map")
     []                               -> filePath "test.blocks" >>= \f -> return (20,        20,        f, "out.map")
-    _                                -> fail "Usage: pokemap [x y [blockfile [outputfile]]]"
+    _                                -> fail "Usage: generatemap [x y [blockfile [outputfile]]]"
 
   putStrLn $ "Loading blocks from " ++ show blockFile ++ "."
 
