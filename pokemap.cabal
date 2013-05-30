@@ -28,7 +28,7 @@ executable generatemap
     filepath,
     MonadRandom,
     monads-tf,
-    optparse-applicative,
+    optparse-applicative == 0.4.*,
     parsec,
     random,
     random-shuffle,
